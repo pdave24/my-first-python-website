@@ -2,11 +2,14 @@ services:
   python:
     build: 
       context: ./
-      target: dev
+      target: dev-watch
     ports:
       - 8000:5000
-    volumes:
-      - ./app:/usr/local/app
+    develop:
+      watch:
+        - path: ./app
+          action: sync
+          target: /usr/local/app
 
   mysql:
     image: mysql:latest

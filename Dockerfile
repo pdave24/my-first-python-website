@@ -16,6 +16,8 @@ RUN pip install watchdog
 ENV FLASK_ENV=development
 CMD ["sh", "-c", "pip install -r requirements.txt && flask run --host=0.0.0.0 --debug"]
 
+FROM dev AS dev-watch
+COPY ./app .
 
 
 # A stage used for deployment
